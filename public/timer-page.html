@@ -111,7 +111,7 @@
       column.appendChild(button);
       row.appendChild(column);
       valueTemp.forEach(elementColum => {
-        if (keysTemp[count] != "time") {
+        if (keysTemp[count] != "timer") {
           var column = document.createElement("td");
           column.appendChild(document.createTextNode(elementColum));
           row.appendChild(column);
@@ -154,6 +154,7 @@
   <div id="Time" class="Time">
     <p class="Time">TIME</p>
   </div>
+  <br>
   <table id="Task" style="margin:auto; width:70%; ">
     <div id="TaskDiv" class="CurrentTask">
       <!-- <a><button>Cancel task</button></a>
