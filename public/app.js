@@ -11,6 +11,7 @@ function googleLogin() {
             const user = result.user;
             document.write('Hello '+user.displayName);
             console.log(user)
+            document.location.href = "timer-page.html";
         })
         .catch(console.log)
 }
