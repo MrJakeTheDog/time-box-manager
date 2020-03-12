@@ -31,7 +31,7 @@ function login(){
   
     firebase.auth().signInWithEmailAndPassword(userEmail, userPass)
     .then(function(){
-        document.location.href = "main.html";
+        document.location.href = "timer-page.html";
     })
     .catch(function(error) {
       // Handle Errors here.
@@ -69,7 +69,7 @@ function facebookLogin() {
             var user = result.user;
             //document.write('Hello '+user.displayName);
             console.log(user)
-            document.location.href = "main.html";
+            document.location.href = "timer-page.html";
         })
         .catch(function(error) {
             // Handle Errors here.
