@@ -1,25 +1,26 @@
 <html>
 
 <head>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="css/main.css" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <title>Timer</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <title>Timer</title>
 
 </head>
 
 <body>
 
-    <div>
-        <h1 class="Titles">Real Time Task</h1>
-    </div>
-     <!-- Button trigger modal -->
-    <button type="button" class= "btn-circle" data-toggle="modal" data-target="#exampleModal"></button>
-   
- 
+  <div>
+    <h1 class="Titles">Real Time Task</h1>
+  </div>
+  <!-- Button trigger modal -->
+  <button type="button" class="btn-circle" data-toggle="modal" data-target="#exampleModal"></button>
+
+
   <!-- Modal -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -29,89 +30,152 @@
           </button>
         </div>
         <div class="modal-body">
-            <div>Name task<br><input id="name" type="text" size="40"></div>
-            <div>Description<br><input id="description"type="text" size="40"></div>
-            <div>Time<br><input id="time" type="time" name="cron" value="00:15" min="00:01"></div>
+          <div>Name task<br><input id="name" type="text" size="40"></div>
+          <div>Description<br><input id="description" type="text" size="40"></div>
+          <div>Time<br><input id="time" type="time" name="cron" value="00:15" min="00:01"></div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button id= "close" type="button" class="btn btn-primary"  onclick="add()">Add</button>
+          <button id="close" type="button" class="btn btn-primary" onclick="add()">Add</button>
         </div>
       </div>
     </div>
   </div>
   <script>
-var task = {};
-function add() {
-    var name = document.getElementById("name");
-    var description = document.getElementById("description");
-    if (name.value == "" || description.value == "") { 
-      alert("Not text in input");
-      return 301;
-    }
-    document.getElementById("close").setAttribute("data-dismiss","modal");
-    task.name = name.value;
-    task.description =  description.value;
-    task.time = document.getElementById("time").value+":00";
-    task.timer=0;
-    name.value = "";
-    description.value = "";
-    console.log(task);
-}
-var time;
-function startTimer() {
-    if (task.time != "" && task.time!=undefined) {
-    if  (task.timer ==0) {time=task.time; task.timer=1;}
-    else if (document.getElementById("Time").innerText!= null) time= document.getElementById("Time").innerText;
-    else {}
-    var arr = time.split(":");
-    var h = arr[0];
-    var m = arr[1];
-    var s = arr[2];
-    if (s == 0) {
-      if (m == 0) {
-          alert("End time");
-          window.location.reload();
-          return;   
-        m = 60;
-        if (h < 10) h = "0" + h;
-      }
-      m--;
-      if (m < 10) m = "0" + m;
-      s = 59;
-    }
-    else s--;
-    if (s < 10) s = "0" + s;
-    document.getElementById("Time").innerText = h+":"+m+":"+s;
-    setTimeout(startTimer, 1000);
-  }
-  else setTimeout(startTimer, 1000);
-}
-  </script>
-    <div id= "Time"class="Time">
-        <p class="Time">TIME</p>
-    </div>
-    
-    
-    <div class="CurrentTask">
-        <a>Date</a>
-        <a>Text</a>
-        <a>Finish Date</a>
-    </div>
-    <table id="Task">
 
-    </table>
-    <script>startTimer()</script>
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-        crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-        crossorigin="anonymous"></script>
-        
+
+    var task = {};
+    function add() {
+      var name = document.getElementById("name");
+      var description = document.getElementById("description");
+      if (name.value == "" || description.value == "") {
+        alert("Not text in input");
+        return 301;
+      }
+      document.getElementById("close").setAttribute("data-dismiss", "modal");
+      task.name = name.value;
+      task.description = description.value;
+      task.time = document.getElementById("time").value + ":00";
+      task.timer = 0;
+      name.value = "";
+      description.value = "";
+      console.log(task);
+      domCreate(task, document.getElementById("Task"));
+    }
+    var time;
+    function startTimer() {
+      if (task.time != "" && task.time != undefined) {
+        if (task.timer == 0) { time = task.time; task.timer = 1; }
+        else if (document.getElementById("Time").innerText != null) time = document.getElementById("Time").innerText;
+        if (document.getElementById("Time").innerText == "Success") { return; }
+        if (document.getElementById("Time").innerText == "Cancel") { return; }
+        var arr = time.split(":");
+        var h = arr[0];
+        var m = arr[1];
+        var s = arr[2];
+        if (s == 0) {
+          if (m == 0) {
+            alert("End time");
+            var button = document.getElementById("Success");
+            var color = document.getElementById("Success").parentNode.parentNode;
+            color.style.backgroundColor = "green"
+            button.parentNode.removeChild(button);
+            var button = document.getElementById("Cancel");
+            button.parentNode.removeChild(button);
+            return;
+            m = 60;
+            if (h < 10) h = "0" + h;
+          }
+          m--;
+          if (m < 10) m = "0" + m;
+          s = 59;
+        }
+        else s--;
+        if (s < 10) s = "0" + s;
+        document.getElementById("Time").innerText = h + ":" + m + ":" + s;
+        setTimeout(startTimer, 1000);
+      }
+      else setTimeout(startTimer, 1000);
+    }
+    function domCreate(data, container) {
+      var keysTemp = Object.keys(data);
+      var valueTemp = Object.values(data)
+      var row = document.createElement("tr");
+      var count = 0;
+      var column = document.createElement("td");
+      var button = document.createElement("button");
+      button.id = "Cancel";
+      button.innerText = "Cancel task";
+      button.setAttribute("onclick", "domCancel()");
+      column.appendChild(button);
+      row.appendChild(column);
+      valueTemp.forEach(elementColum => {
+        if (keysTemp[count] != "time") {
+          var column = document.createElement("td");
+          column.appendChild(document.createTextNode(elementColum));
+          row.appendChild(column);
+          count++;
+        }
+      })
+      var column = document.createElement("td");
+      var button = document.createElement("button");
+      button.id = "Success";
+      button.innerText = "Success task";
+      button.setAttribute("onclick", "domSuccess()");
+      column.appendChild(button);
+      row.appendChild(column);
+      console.log(row);
+      container.appendChild(row);
+
+    }
+    function domCancel() {
+      var timer = document.getElementById("Time");
+      var button = document.getElementById("Success");
+      var color = document.getElementById("Success").parentNode.parentNode;
+      color.style.backgroundColor = "red"
+      button.parentNode.removeChild(button);
+      var button = document.getElementById("Cancel");
+      button.parentNode.removeChild(button);
+      timer.innerText = "Cancel";
+    }
+    function domSuccess() {
+      var timer = document.getElementById("Time");
+      var button = document.getElementById("Success");
+      var color = document.getElementById("Success").parentNode.parentNode;
+      color.style.backgroundColor = "green"
+      button.parentNode.removeChild(button);
+      var button = document.getElementById("Cancel");
+      button.parentNode.removeChild(button);
+      timer.innerText = "Success";
+    }
+
+  </script>
+  <div id="Time" class="Time">
+    <p class="Time">TIME</p>
+  </div>
+  <table id="Task" style="margin:auto; width:70%; ">
+    <div id="TaskDiv" class="CurrentTask">
+      <!-- <a><button>Cancel task</button></a>
+     <a></a>
+     <a></a>
+     <a><button>Success task</button></a> -->
+    </div>
+
+  </table>
+  <script>
+    startTimer();
+
+  </script>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+
 </body>
 
 </html>
