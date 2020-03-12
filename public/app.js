@@ -53,7 +53,9 @@ function googleLogin() {
             var user = result.user;
             //document.write('Hello '+user.displayName);
             console.log(user)
-            document.location.href = "main.html";
+
+            document.location.href = "timer-page.html";
+
         })
         .catch(console.log)
 }
