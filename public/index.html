@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Welcome to Firebase Hosting</title>
+    <link rel="stylesheet" href="style.css"/>
 
     <!-- update the version number as needed -->
     <script defer src="/__/firebase/7.10.0/firebase-app.js"></script>
@@ -14,14 +15,27 @@
     <script defer src="/__/firebase/7.10.0/firebase-storage.js"></script>
     <!-- initialize the SDK after all desired features are loaded -->
     <script defer src="/__/firebase/init.js"></script>
-
   </head>
-  <body>
-  <button onclick="googleLogin()">
-    Google Login
-  </button>
-    <script src = "app.js">
-     
-    </script>
-  </body>
+
+<body>
+  <h1>Form</h1>
+    <div id="formContainer">
+      <div id="header"> </div>
+      <input type="text" placeholder="Email..." id="email_field" />
+      <input type="password" placeholder="Password..." id="password_field" />
+      <button onclick="signUp()" id="signUp">
+      SignUp
+      </button>
+      <button onclick="login()" id="signIn">
+      Login to Account
+      </button>
+      <button onclick="googleLogin()" id="signGoogle">
+      Google Login
+      </button>
+      <button onclick="facebookLogin()" id="signGoogle">
+      Facebook Login
+      </button>
+    </div>
+    <script src = "app.js"></script>
+</body>
 </html>

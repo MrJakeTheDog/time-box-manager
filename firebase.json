@@ -8,6 +8,7 @@
     ]
   },
   "hosting": {
+    "site": "time-manager-fast",
     "public": "public",
     "ignore": [
       "firebase.json",
